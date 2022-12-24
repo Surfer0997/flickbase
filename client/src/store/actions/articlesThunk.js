@@ -124,3 +124,31 @@ export const changeArticleStatus = createAsyncThunk(
       }
     }
   );
+
+  export const getCategories = createAsyncThunk(
+    'articles/getCategories',
+    async (obj, {dispatch}) => {
+      try {
+        const request = await axios.get(`/api/articles/categories`, getAuthHeader());
+        return request.data;
+      } catch (error) {
+        dispatch(errorGlobal(error.response.data.message));
+        throw error;
+      }
+    }
+  );
+
+  export const addCategory = createAsyncThunk(
+    'articles/addCategory',
+    async (categoryName, {dispatch}) => {
+      try {
+       const response = await axios.post('/api/articles/categories', categoryName, getAuthHeader());
+       const addedCategory = response.data;
+       dispatch(successGlobal('Category added!'));
+        return addedCategory;
+      } catch (error) {
+        dispatch(errorGlobal(error.response.data.message));
+        throw error;
+      }
+    }
+  )

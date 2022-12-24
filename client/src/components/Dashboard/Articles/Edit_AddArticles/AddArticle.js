@@ -1,5 +1,5 @@
 // lib
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useFormik, FieldArray, FormikProvider } from 'formik';
 import { useNavigate } from 'react-router-dom';
 // comp
@@ -8,7 +8,7 @@ import { errorHelper, Loader } from '../../../../utils/tools';
 import { validation, formValues } from './validationSchema';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
-
+import { addArticle, getCategories } from '../../../../store/actions/articlesThunk';
 // MUI
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -24,9 +24,8 @@ import FormHelperText from '@mui/material/FormHelperText';
 
 import InputLabel from '@mui/material/InputLabel';
 import AddIcon from '@mui/icons-material/Add';
-import { visuallyHidden } from '@mui/utils';
 import WYSIWYG from '../../../../utils/WYSIWYG';
-import { addArticle } from '../../../../store/actions/articlesThunk';
+
 
 const AddArticle = () => {
   const [editorBlur, setEditorBlur] = useState(false);
@@ -54,6 +53,11 @@ const AddArticle = () => {
   const handleEditorBlur = blur => {
     setEditorBlur(true);
   };
+
+  useEffect(()=>{
+    dispatch(getCategories({}))
+  }, [dispatch]);
+
   return (
     <>
       <AdminTitle title="Add article" />
@@ -158,6 +162,26 @@ const AddArticle = () => {
 
         <Divider className="mt-3 mb-3" />
 
+        <FormControl fullWidth>
+          <InputLabel>Select a category</InputLabel>
+          <Select
+            name="category"
+            label="Select a category"
+            {...formik.getFieldProps('category')}
+            error={formik.errors.category && formik.touched.category ? true : false}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {articles.categories.map(category=><MenuItem key={category._id} value={category._id}>{category.name}</MenuItem>)}
+          </Select>
+          {formik.errors.category && formik.touched.category ? (
+            <FormHelperText error={true}>{formik.errors.category}</FormHelperText>
+          ) : null}
+        </FormControl>
+
+        <Divider className="mt-3 mb-3" />
+        
         <FormControl fullWidth>
           <InputLabel>Select a status</InputLabel>
           <Select

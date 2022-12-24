@@ -9,7 +9,7 @@ const auth = require('../middleware/auth');
 // router.get('/test', (req,res)=>{})
 router.post('/register', authController.register);
 router.post('/signin', authController.signin);
-// router.get('/dog', authController.dog);
+
 router.get('/isauth', auth(), authController.isauth);
 
 

@@ -10,7 +10,8 @@ const allRights = {
 const grantsObject = {
     admin: {
         profile: allRights,
-        articles: allRights
+        articles: allRights,
+        categories: allRights
     },
     user: {
         // test: {'read:any': ['*']},

@@ -6,6 +6,7 @@ import Auth from './components/Auth/Auth';
 import AdminArticles from './components/Dashboard/Articles/AdminArticles';
 import AddArticle from './components/Dashboard/Articles/Edit_AddArticles/AddArticle';
 import EditArticle from './components/Dashboard/Articles/Edit_AddArticles/EditArticle';
+import AdminCategories from './components/Dashboard/Categories/AdminCategories';
 import Dashboard from './components/Dashboard/Dashboard';
 import DashboardMain from './components/Dashboard/Main/DashboardMain';
 import AdminProfile from './components/Dashboard/Profile/AdminProfile';
@@ -57,6 +58,7 @@ const Router = () => {
               <Route path="articles" element={<AdminArticles />} />
               <Route path="articles/add" element={<AddArticle />} />
               <Route path="articles/edit/:articleId" element={<EditArticle />} />
+              <Route path="categories" element={<AdminCategories />} />
             </Route>
           </Routes>
         </MainLayout>

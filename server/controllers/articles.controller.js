@@ -1,5 +1,4 @@
 const httpStatus = require('http-status');
-const { ApiError } = require('../middleware/apiError');
 const { articlesService } = require('../services');
 
 const articlesController = {
@@ -72,5 +71,6 @@ const articlesController = {
         }
     },
 }
+
 
 module.exports = articlesController;

@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addArticle, changeArticleStatus, getArticle, getPaginateArticles, homePageLoadMore } from '../actions/articlesThunk';
+import {
+  addArticle,
+  changeArticleStatus,
+  getArticle,
+  getPaginateArticles,
+  homePageLoadMore,
+  getCategories,
+  addCategory,
+} from '../actions/articlesThunk';
 
 const initialState = {
   homeSort: {
@@ -11,6 +19,7 @@ const initialState = {
   loading: false,
   articles: [],
   current: null,
+  categories: [],
   adminArticles: {},
 };
 
@@ -18,9 +27,9 @@ export const articlesSlice = createSlice({
   name: 'articles',
   initialState,
   reducers: {
-    clearCurrentArticle: (state) => {
-        state.current = null;
-    }
+    clearCurrentArticle: state => {
+      state.current = null;
+    },
   },
   extraReducers: builder => {
     builder
@@ -57,9 +66,9 @@ export const articlesSlice = createSlice({
         state.articles = action.payload.newState;
         state.homeSort.skip = action.payload.sort.skip;
       })
-    //  .addCase(homePageLoadMore.rejected, (state)=>{state.loading = false}) // NOT USED STILL
-    // GET ARTICLE
-    .addCase(getArticle.pending, state => {
+      //  .addCase(homePageLoadMore.rejected, (state)=>{state.loading = false}) // NOT USED STILL
+      // GET ARTICLE
+      .addCase(getArticle.pending, state => {
         state.loading = true;
       })
       .addCase(getArticle.fulfilled, (state, action) => {
@@ -69,7 +78,15 @@ export const articlesSlice = createSlice({
       .addCase(getArticle.rejected, state => {
         state.loading = false;
       })
+      // GET CATEGORIES
+      .addCase(getCategories.fulfilled, (state, action) => {
+        state.categories = action.payload;
+      })
+      // ADD CATEGORY
+      .addCase(addCategory.fulfilled, (state, action) => {
+        state.categories = [...state.categories, action.payload];
+      });
   },
 });
-export const {clearCurrentArticle} = articlesSlice.actions;
+export const { clearCurrentArticle } = articlesSlice.actions;
 export default articlesSlice.reducer;

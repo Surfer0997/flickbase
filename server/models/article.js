@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const validator = require('validator');
 const aggregatePaginate = require('mongoose-aggregate-paginate-v2')
 require('dotenv').config();
@@ -15,7 +16,7 @@ const articleSchema = mongoose.Schema({
     },
     excerpt: {
         type:String,
-        required:[true, 'Please, add the exerpt'],
+        required:[true, 'Please, add the excerpt'],
         maxLength: 500
     },
     score: {
@@ -44,6 +45,12 @@ const articleSchema = mongoose.Schema({
         enum: ['draft', 'public'],
         default: 'draft',
         index: true // easier for searching
+    },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true,
+        default: '63a6ce45b7590e6fb4569bef'
     },
     date: {
         type: Date,

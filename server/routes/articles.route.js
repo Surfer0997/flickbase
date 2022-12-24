@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const articlesController = require('../controllers/articles.controller');
+const categoriesController = require('../controllers/categories.controller');
 // Middlewares
 const auth = require('../middleware/auth'); // cause only admins can create articles
 const { addArticleValidator } = require('../middleware/validation');
@@ -23,5 +24,16 @@ router.route('/all') // get all articles
 .post(articlesController.getMoreArticles)
 
 
-router.post('/admin/paginate', auth('readAny', 'articles'), articlesController.adminPaginate)
+router.post('/admin/paginate', auth('readAny', 'articles'), articlesController.adminPaginate);
+
+
+//// CATEGORIES
+router.route('/categories')
+.post(auth('createAny', 'categories'), categoriesController.createCategory)
+.get(auth('readAny', 'categories'), categoriesController.getAllCategories)
+
+
+
+
+
 module.exports = router;

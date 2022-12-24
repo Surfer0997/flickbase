@@ -24,9 +24,8 @@ import FormHelperText from '@mui/material/FormHelperText';
 
 import InputLabel from '@mui/material/InputLabel';
 import AddIcon from '@mui/icons-material/Add';
-import { visuallyHidden } from '@mui/utils';
 import WYSIWYG from '../../../../utils/WYSIWYG';
-import { getAdminArticle, updateArticle } from '../../../../store/actions/articlesThunk';
+import { getAdminArticle, updateArticle, getCategories } from '../../../../store/actions/articlesThunk';
 
 const EditArticle = () => {
   const [editorBlur, setEditorBlur] = useState(false);
@@ -59,9 +58,15 @@ const EditArticle = () => {
 const [loading, setLoading] = useState(true);
 
 useEffect(()=>{
+  dispatch(getCategories({}));
     dispatch(getAdminArticle(articleId))
     .unwrap()
     .then((articleData)=>{
+
+        if(articleData.category) {
+          articleData.category = articleData.category._id;
+        }
+
         setLoading(false);
         setFormData(articleData); // !!
         setEditorContent(articleData.content)
@@ -172,6 +177,26 @@ useEffect(()=>{
             {...errorHelper(formik, 'director')}
           />
         </div>
+
+        <Divider className="mt-3 mb-3" />
+
+        <FormControl fullWidth>
+          <InputLabel>Select a category</InputLabel>
+          <Select
+            name="category"
+            label="Select a category"
+            {...formik.getFieldProps('category')}
+            error={formik.errors.category && formik.touched.category ? true : false}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {articles.categories.map(category=><MenuItem key={category._id} value={category._id}>{category.name}</MenuItem>)}
+          </Select>
+          {formik.errors.category && formik.touched.category ? (
+            <FormHelperText error={true}>{formik.errors.category}</FormHelperText>
+          ) : null}
+        </FormControl>
 
         <Divider className="mt-3 mb-3" />
 
