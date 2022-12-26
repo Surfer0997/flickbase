@@ -122,7 +122,7 @@ export const articleLike = createAsyncThunk(
           return likedArticles.data;
         } 
       } else {
-        console.log('Not auhtenticated');
+        dispatch(errorGlobal('Authorize to add favourite articles'));
       }
      
     } catch (error) {
