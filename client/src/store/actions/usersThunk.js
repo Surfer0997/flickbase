@@ -102,4 +102,32 @@ export const accountVerify = createAsyncThunk(
       throw error;
     }
    }
+);
+
+export const articleLike = createAsyncThunk(
+  'users/articleLike',
+   async(articleId, {dispatch, getState})=>{
+    try {
+      const state = getState();
+      if (state.users.auth) {
+        const oldLikes = state.users.data.likedArticles;
+        if (oldLikes.includes(articleId)) {
+          // delete
+          const newLikedArticles = oldLikes.filter(article=>article!==articleId);
+          const likedArticles = await axios.patch(`/api/users/likes`, {articles:newLikedArticles}, getAuthHeader());
+          return likedArticles.data;
+        } else {
+          // add
+          const likedArticles = await axios.post(`/api/users/likes`, {articleId}, getAuthHeader());
+          return likedArticles.data;
+        } 
+      } else {
+        console.log('Not auhtenticated');
+      }
+     
+    } catch (error) {
+      dispatch(errorGlobal(error.response.data.message));
+      throw error;
+    }
+   }
 )

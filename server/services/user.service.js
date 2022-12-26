@@ -65,4 +65,49 @@ const validateEmailToken = (token) => {
     return jwt.verify(token, process.env.DB_SECRET);
 }
 
-module.exports = {findUserByEmail, findUserById, updateUserProfile, updateUserEmail, validateEmailToken}
+const addLikedArticle = async (req) => {
+    try {
+        const user = User.findOneAndUpdate({_id:req.user._id}, {
+            "$addToSet": {
+                "likedArticles": req.body.articleId
+            },   
+        },
+        {
+            new: true
+        });
+
+        if (!user) {
+            throw new ApiError(httpStatus.NOT_FOUND, 'User not found (add liked article)');
+        }
+
+        return user;
+
+    } catch (error) {
+        throw (error);
+    }
+}
+
+const removeLikedArticle = async (req) => {
+    try {
+        const user = User.findOneAndUpdate({_id:req.user._id}, {
+            "$set": {
+                "likedArticles": req.body.articles // we just replace array with filtered array :)))
+            },   
+        },
+        {
+            new: true
+        });
+
+        if (!user) {
+            throw new ApiError(httpStatus.NOT_FOUND, 'User not found (add liked article)');
+        }
+
+        return user;
+
+    } catch (error) {
+        throw (error);
+    }
+}
+
+
+module.exports = {findUserByEmail, findUserById, updateUserProfile, updateUserEmail, validateEmailToken, addLikedArticle, removeLikedArticle}

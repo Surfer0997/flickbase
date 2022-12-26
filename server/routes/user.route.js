@@ -9,6 +9,9 @@ router.route('/profile', )
 .get(auth('readOwn', 'profile'), userController.profile) // we CAN chain router methods
 .patch(auth('updateOwn', 'profile'), userController.updateProfile)
 
+router.route('/likes')
+.post(auth('updateOwn', 'profile'), userController.addLikedArticle)
+.patch(auth('updateOwn', 'profile'), userController.removeLikedArticle)
 
 router.patch('/email', auth('updateOwn', 'profile'), userController.updateEmail)
 router.get('/verifyEmail', userController.verifyEmail)

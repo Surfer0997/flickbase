@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { changeEmail, isAuth, registerUser, signInUser, signOut, updateUserProfile } from '../actions/usersThunk';
+import {
+  articleLike,
+  changeEmail,
+  isAuth,
+  registerUser,
+  signInUser,
+  signOut,
+  updateUserProfile,
+} from '../actions/usersThunk';
 
 const DEFAULT_USER_STATE = {
   loading: false,
@@ -11,6 +19,7 @@ const DEFAULT_USER_STATE = {
     age: null,
     roles: null,
     verified: null,
+    likedArticles: null,
   },
   auth: null,
 };
@@ -19,9 +28,9 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState: DEFAULT_USER_STATE,
   reducers: {
-    setVerify:(state)=>{
+    setVerify: state => {
       state.data.verified = true;
-    }
+    },
   },
   extraReducers: builder => {
     builder
@@ -55,20 +64,20 @@ export const usersSlice = createSlice({
       })
       .addCase(isAuth.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = {...state.data,...action.payload.data};
+        state.data = { ...state.data, ...action.payload.data };
         state.auth = action.payload.auth;
       })
       .addCase(isAuth.rejected, state => {
         state.loading = false;
       })
       // SIGNING OUT
-      .addCase(signOut.fulfilled, state=>{
+      .addCase(signOut.fulfilled, state => {
         state.data = DEFAULT_USER_STATE.data;
         state.auth = false; // if to null, causes loop problem
       })
       // UPDATING PROFILE
-      .addCase(updateUserProfile.fulfilled, (state, action)=>{
-        state.data = {...state.data, ...action.payload}
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.data = { ...state.data, ...action.payload };
       })
       // UPDATING EMAIL
       .addCase(changeEmail.pending, state => {
@@ -76,13 +85,19 @@ export const usersSlice = createSlice({
       })
       .addCase(changeEmail.fulfilled, (state, action) => {
         state.loading = false;
-        state.data = {...state.data,...action.payload};
+        state.data = { ...state.data, ...action.payload };
       })
       .addCase(changeEmail.rejected, state => {
         state.loading = false;
       })
+      // ADD LIKED ARTICLE
+      .addCase(articleLike.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.data.likedArticles = [...action.payload];
+        }
+      });
   },
 });
 
-export const {setVerify} = usersSlice.actions;
+export const { setVerify } = usersSlice.actions;
 export default usersSlice.reducer;

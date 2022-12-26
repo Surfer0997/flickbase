@@ -13,14 +13,15 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     validate(value) {
       if (!validator.isEmail(value)) {
-        throw new Error('Invalid email but nothing in this world is perfect');
+        throw new Error('Email is invalid, but nothing in this world is perfect,  ;)');
       }
     },
   },
   password: {
     type: String,
-    required: true,
+    required: [true, 'Bro... Just how I have to do it without password?'],
     trim: true,
+
   },
   role: {
     type: String,
@@ -48,6 +49,10 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  likedArticles: {
+    type: [String], // we will store id's but not using 'em for thr reference to other collection
+    default: []
+  }
 });
 // export type User = InferSchemaType<typeof userSchema>;
 

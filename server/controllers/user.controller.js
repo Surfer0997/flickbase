@@ -63,7 +63,26 @@ const userController = {
         } catch (error) {
             next(error);
         }
-    }
+    },
+
+    async addLikedArticle(req,res,next) {
+        try {
+            const user = await userService.addLikedArticle(req);
+            res.json(user.likedArticles);
+
+        } catch (error) {
+            next(error);
+        }
+    },
+    async removeLikedArticle(req,res,next) {
+        try {
+            const user = await userService.removeLikedArticle(req);
+            res.json(user.likedArticles);
+
+        } catch (error) {
+            next(error);
+        }
+    },
 }
 
 module.exports = userController;
