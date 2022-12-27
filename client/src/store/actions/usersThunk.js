@@ -123,6 +123,7 @@ export const articleLike = createAsyncThunk(
         } 
       } else {
         dispatch(errorGlobal('Authorize to add favourite articles'));
+        // test
       }
      
     } catch (error) {
