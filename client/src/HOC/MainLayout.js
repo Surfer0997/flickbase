@@ -2,7 +2,7 @@
 
 import { Container } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const MainLayout = (props) => {

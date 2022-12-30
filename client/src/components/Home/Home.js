@@ -15,7 +15,7 @@ const Home = () => {
         if (articles.articles.length <= 0) {
             dispatch(homePageLoadMore(articles.homeSort));
         }
-    }, [dispatch]);
+    }, [dispatch, articles.articles.length, articles.homeSort]);
 
 const getNextArticles = () => {
     const skip = articles.homeSort.skip + articles.homeSort.limit;

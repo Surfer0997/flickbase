@@ -8,7 +8,7 @@ import { Loader } from '../../utils/tools'
 
 const AccountVerify = () => {
     const dispatch = useDispatch();
-    const [search,setSearch] = useSearchParams(); // we get verification token from query string http://localhost:3001/api/users/verifyEmail?validation=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2Mzk2ZWRhMzUyMDg0ZWYwZjMxNGE0YTQiLCJpYXQiOjE2NzA4MzU2MTksImV4cCI6MTY3MDg3MTYxOX0.EMsyRFWZBT7gIZe1ez7VhBxjRYKjKUs2Tz-GkT_upCk
+    const [search] = useSearchParams(); // we get verification token from query string http://localhost:3001/api/users/verifyEmail?validation=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2Mzk2ZWRhMzUyMDg0ZWYwZjMxNGE0YTQiLCJpYXQiOjE2NzA4MzU2MTksImV4cCI6MTY3MDg3MTYxOX0.EMsyRFWZBT7gIZe1ez7VhBxjRYKjKUs2Tz-GkT_upCk
     const navigate = useNavigate();
     const token = search.get('t')
 
