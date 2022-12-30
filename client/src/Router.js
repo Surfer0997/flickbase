@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import AccountVerify from './components/Auth/AccountVerify';
 import Auth from './components/Auth/Auth';
+import { Background } from './components/Background/Background';
 import AdminArticles from './components/Dashboard/Articles/AdminArticles';
 import AddArticle from './components/Dashboard/Articles/Edit_AddArticles/AddArticle';
 import EditArticle from './components/Dashboard/Articles/Edit_AddArticles/EditArticle';
@@ -17,6 +18,8 @@ import AuthGuard from './HOC/AuthGuard';
 import MainLayout from './HOC/MainLayout';
 import { isAuth } from './store/actions/usersThunk';
 import { Loader } from './utils/tools';
+import './components/Background/Background.css';
+import Contacts from './components/Contacts/Contacts';
 
 const Router = () => {
   const [loading, setLoading] = useState(true); // so show content only after auto auth check
@@ -35,6 +38,7 @@ const Router = () => {
 
   return (
     <BrowserRouter>
+      <Background />
       <Header />
       {loading ? (
         <Loader />
@@ -42,6 +46,7 @@ const Router = () => {
         <MainLayout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/contact" element={<Contacts />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/verification" element={<AccountVerify />} />
             <Route path="/articles/article/:id" element={<Article />} />
@@ -53,7 +58,7 @@ const Router = () => {
                 </AuthGuard>
               }
             >
-              <Route index element={<DashboardMain/>}/>
+              <Route index element={<DashboardMain />} />
               <Route path="profile" element={<AdminProfile />} />
               <Route path="articles" element={<AdminArticles />} />
               <Route path="articles/add" element={<AddArticle />} />

@@ -133,7 +133,7 @@ color: #525252;
 /*/////////////  auth /////////*/
 
 .auth_container { 
-  width: 250px;
+  width: 284px;
   margin: 0 auto;
 }
 
@@ -154,6 +154,7 @@ color: #525252;
 
 .adminLayout {
   height:100vh;
+  background: #fff;
 }
 
 .app_container.dash_layout {

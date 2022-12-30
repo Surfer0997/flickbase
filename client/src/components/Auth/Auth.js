@@ -56,8 +56,8 @@ const Auth = () => {
 
   return (
     <PreventExtraSignIn users={users}>
-      <div className="auth_container">
-        <h1>Authenticate</h1>
+      <div className="auth_container" style={{background:'#fff', borderRadius: '15px', padding: '2rem', display: 'block'}}>
+        <h1 style={{fontSize:'calc(1.375rem + 1vw);'}}>Authenticate</h1>
         {users.loading ? (
           <Loader />
         ) : (
