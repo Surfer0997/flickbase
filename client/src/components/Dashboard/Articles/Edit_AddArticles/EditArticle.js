@@ -1,7 +1,7 @@
 // lib
 import { useState, useRef, useEffect } from 'react';
 import { useFormik, FieldArray, FormikProvider } from 'formik';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 // comp
 import { AdminTitle } from '../../../../utils/tools';
 import { errorHelper, Loader } from '../../../../utils/tools';
@@ -37,13 +37,18 @@ const EditArticle = () => {
 
   const actorsValue = useRef('');
   const { articleId } = useParams();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: formData,
     validationSchema: validation,
     onSubmit: values => {
-      dispatch(updateArticle({values, articleId}));
+      dispatch(updateArticle({values, articleId}))
+      .unwrap()
+      .then(()=>{
+        navigate('/dashboard/articles')
+      })
     },
   });
 
@@ -69,6 +74,7 @@ useEffect(()=>{
 
         setLoading(false);
         setFormData(articleData); // !!
+      //  setEditorContent(HTMLDecode(articleData.content))
         setEditorContent(articleData.content)
     })
 }, [articleId, dispatch])

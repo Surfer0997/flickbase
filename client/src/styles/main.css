@@ -85,6 +85,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   
 .article_container {
   font-size: 17px;
+  color: #fff;
 }
 
   .article_container .image{
@@ -153,7 +154,7 @@ color: #525252;
 /*////////// dashboard /////////*/
 
 .adminLayout {
-  height:100vh;
+  min-height:100vh;
   background: #fff;
 }
 
