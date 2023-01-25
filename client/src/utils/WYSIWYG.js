@@ -34,7 +34,10 @@ const WYSIWYG = (props) => {
 
     useEffect(()=>{
          if (props.editorContent) {
-            const blockFromHtml = htmlToDraft(HTMLDecode(props.editorContent));
+            console.log(props.editorContent);
+            console.log(HTMLDecode(props.editorContent));
+            const blockFromHtml = htmlToDraft(HTMLDecode(props.editorContent)); // HTMLDecode(props.editorContent)
+        console.log(blockFromHtml);
             const {contentBlocks, entityMap} = blockFromHtml;
             const contentState = ContentState.createFromBlockArray(contentBlocks,entityMap);
 

@@ -10,7 +10,6 @@ import { clearCurrentArticle } from '../../store/reducers/articlesSlice';
 
 const Article = () => {
     const articles = useSelector(state=>state.articles);
-    console.log(articles?.current?.content);
     const dispatch = useDispatch();
     const { id } = useParams();
 

@@ -12,7 +12,7 @@ const AdminLayout = (props) => {
     return(
         <>
             <div className='row adminLayout'>
-                <nav className='col-md-2 d-none d-md-block sidebar'>
+                <nav className='col-md-2 d-md-block sidebar'>
                     <div>
                     <List>
                         <ListItem button component={RouterLink} to="/dashboard/profile">

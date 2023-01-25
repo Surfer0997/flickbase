@@ -30,7 +30,7 @@ const PaginateComponent = ({ articles, goToPrevPage, goToNextPage, goToEdit, han
                     Edit
                   </td>
                   <td className="action_btn status_btn" onClick={handleStatusChange.bind(null, item.status, item._id)}>
-                    {item.status}
+                    {item.status === 'public' ? 'Public' : item.status === 'draft' ? 'Draft' : 'Unknown'}
                   </td>
                 </tr>
               ))}

@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useFormik, FieldArray, FormikProvider } from 'formik';
 import { useNavigate, useParams } from 'react-router-dom';
 // comp
-import { AdminTitle } from '../../../../utils/tools';
+import { AdminTitle, HTMLDecode } from '../../../../utils/tools';
 import { errorHelper, Loader } from '../../../../utils/tools';
 import { validation, formValues } from './validationSchema';
 // redux
@@ -74,8 +74,8 @@ useEffect(()=>{
 
         setLoading(false);
         setFormData(articleData); // !!
-      //  setEditorContent(HTMLDecode(articleData.content))
-        setEditorContent(articleData.content)
+      setEditorContent(HTMLDecode(articleData.content))
+    
     })
 }, [articleId, dispatch])
 

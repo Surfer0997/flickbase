@@ -1,8 +1,9 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    color: #424242;
+  font-family: 'Roboto', sans-serif;
+  color: #424242;
 }
-a, a:hover {
+a,
+a:hover {
   color: inherit;
 }
 
@@ -14,7 +15,7 @@ a, a:hover {
   margin: 0px 10px;
 }
 .navbar.dash_layout {
-  position:relative !important;
+  position: relative !important;
 }
 
 nav .nav-link {
@@ -42,14 +43,14 @@ nav .nav-link {
 }
 
 .not_verified {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-    text-align: center;
-    background: red;
-    color: white;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  text-align: center;
+  background: red;
+  color: white;
 }
 
 /*============ Carrousel ==============*/
@@ -65,48 +66,79 @@ nav .nav-link {
   position: absolute;
   width: 100%;
   height: 100%;
-/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
-background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.65+100 */
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.65) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
+}
+/*////////// CONTACTMS  /////////////*/
+.contacts-card {
+  align-items: center;
+  background-color: rgba(255, 0, 255, 0.6) !important;
+  height: 100% !important;
+}
+.contacts_card {
+  text-align: center;
+  justify-content: center;
+}
+.contact-card__icon-button {
+  position: absolute !important;
+  display: flex !important;
+  width: 100% !important;
+  justify-content: center !important;
+  margin-top: -24px !important;
+  z-index: 1000 !important;
+}
+/*/////////////  ARTICLE /////////*/
 
+/* ARTICLE CARD */
+.article-card {
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  transition: all 2s;
+  box-shadow: 0 0 0 0 #fff;
 }
 
-
-/*/////////////  ARTICLE /////////*/
-          
+.article-card:hover {
+  -webkit-box-shadow: 0px 0px 20px 7px rgba(255, 0, 255, 0.8);
+  -moz-box-shadow: 0px 0px 20px 7px rgba(255, 0, 255, 0.8);
+  box-shadow: 0px 0px 20px 7px rgba(255, 0, 255, 0.8);
+}
+/*  */
 
 .article_container h1 {
   font-weight: 900;
   font-size: 50px;
   margin-top: 30px;
 }
-  
+
 .article_container {
   font-size: 17px;
   color: #fff;
 }
 
-  .article_container .image{
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    width: 100%;
-    height: 500px;
-    background-position: top center !important;
-  }
-
+.article_container .image {
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  width: 100%;
+  height: 500px;
+  background-position: top center !important;
+}
 
 @media (max-width: 800px) {
-  .article_container .image{
+  .article_container .image {
     height: 300px;
   }
   .article_container h1 {
     font-size: 35px;
   }
- 
 }
-
 
 /*/////////////  Scorecard /////////*/
 
@@ -117,8 +149,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   margin-top: 50px;
 }
 
-.scorecard .rating .MuiListItemText-secondary{
-  font-size:50px;
+.scorecard .rating .MuiListItemText-secondary {
+  font-size: 50px;
 }
 .scorecard .MuiAvatar-colorDefault {
   background-color: #efefef;
@@ -128,12 +160,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
   margin: 5px 10px 5px 0px;
 }
 .scorecard .MuiSvgIcon-root {
-color: #525252;
+  color: #525252;
 }
 
 /*/////////////  auth /////////*/
 
-.auth_container { 
+.auth_container {
   width: 284px;
   margin: 0 auto;
 }
@@ -148,13 +180,13 @@ color: #525252;
 @media (max-width: 800px) {
   .auth_container {
     width: 100%;
-  } 
+  }
 }
 
 /*////////// dashboard /////////*/
 
 .adminLayout {
-  min-height:100vh;
+  min-height: 100vh;
   background: #fff;
 }
 
@@ -164,7 +196,7 @@ color: #525252;
   max-width: 100%;
 }
 
-.dash_layout nav{ 
+.dash_layout nav {
   background: #212121;
   padding: 0px;
   border-right: 5px solid #565656;
@@ -181,10 +213,10 @@ color: #525252;
 /*///// forms /////////////*/
 
 .chip_container {
-    display: flex;
-    justify-content: left;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .chip_container .MuiChip-root {
@@ -195,7 +227,7 @@ color: #525252;
   margin-bottom: 0;
 }
 .rdw-editor-main {
-  border: 1px solid #F1F1F1;
+  border: 1px solid #f1f1f1;
   padding: 10px;
 }
 
@@ -214,7 +246,7 @@ color: #525252;
 }
 
 .actors_form .MuiButtonBase-root {
-  border-bottom:0px
+  border-bottom: 0px;
 }
 .article_form {
   padding-bottom: 50px;
@@ -232,7 +264,7 @@ color: #525252;
 }
 
 .form-group {
-margin-top: 20px;
+  margin-top: 20px;
 }
 
 .rdw-editor-toolbar,
@@ -246,7 +278,7 @@ margin-top: 20px;
 
 /*///// DASHBOARD TABLE /////////////*/
 
-.articles_table .action_btn{
+.articles_table .action_btn {
   width: 100px;
   text-align: center;
   font-weight: 900;
@@ -263,11 +295,11 @@ margin-top: 20px;
   color: white !important;
 }
 
-.articles_table .edit_btn{ 
+.articles_table .edit_btn {
   background: #117a8b;
   color: white !important;
 }
-.articles_table .edit_btn:hover{ 
+.articles_table .edit_btn:hover {
   background: #3d99a8;
   color: white !important;
 }
@@ -276,7 +308,7 @@ margin-top: 20px;
   background: #ffc107;
   color: white !important;
 }
-.articles_table .status_btn:hover{ 
+.articles_table .status_btn:hover {
   background: #ffd24c;
   color: white !important;
 }

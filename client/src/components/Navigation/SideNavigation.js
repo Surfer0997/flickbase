@@ -36,7 +36,7 @@ const SideDrawer = ({ user, signOutUser }) => {
               <ListItemIcon>
                 <MailIcon />
               </ListItemIcon>
-              <ListItemText primary="Contact" />
+              <ListItemText primary="Contact us" />
             </ListItem>
 
             {!user.auth ? (

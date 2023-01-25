@@ -26,6 +26,11 @@ export const showToast = (type, msg) => {
                 position: toast.POSITION.BOTTOM_RIGHT
             })
             break;
+            case 'INFO':
+              toast.info(msg, {
+                  position: toast.POSITION.BOTTOM_RIGHT
+              })
+              break;
             default: return false;
     }    
 }
@@ -44,5 +49,6 @@ export const AdminTitle = ({title}) => (
 
 export const HTMLDecode = (input) => {
   const doc = new DOMParser().parseFromString(input, 'text/html');
-  return doc.documentElement.textContent;
+  console.log(doc.documentElement);
+  return doc.documentElement.textContent; // returns stupid text, not the html with an image
 }
