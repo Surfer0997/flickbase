@@ -152,7 +152,7 @@ box-shadow: 3px 5px 16px 4px rgba(255,255,255,0.15) !important;
 }
 
 .article_container .image {
-  background-size: cover !important;
+  background-size: contain !important;
   background-repeat: no-repeat !important;
   width: 100%;
   height: 500px;

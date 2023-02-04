@@ -11,5 +11,5 @@ export const Background = () => {
   }, [])
   const spans = useGetBackgroundAnimItems();
 
-  return <div style={{position:'absolute', overflow:'hidden', width:'100%', height:'100%'}}>{spans}</div>;
+  return <div style={{position:'absolute', overflow:'hidden', width:'100%', height:'100%', pointerEvents: 'none'}}>{spans}</div>;
 };

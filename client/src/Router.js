@@ -20,6 +20,7 @@ import { isAuth } from './store/actions/usersThunk';
 import { Loader } from './utils/tools';
 import './components/Background/Background.css';
 import Contacts from './components/Contacts/Contacts';
+import Footer from './components/Footer/Footer';
 
 const Router = () => {
   const [loading, setLoading] = useState(true); // so show content only after auto auth check
@@ -40,6 +41,7 @@ const Router = () => {
     <BrowserRouter>
       <Background />
       <Header />
+    
       {loading ? (
         <Loader />
       ) : (
@@ -68,6 +70,7 @@ const Router = () => {
           </Routes>
         </MainLayout>
       )}
+         <Footer/>
     </BrowserRouter>
   );
 };

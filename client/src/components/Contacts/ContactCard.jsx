@@ -26,7 +26,7 @@ export const ContactCard = ({ data: { icon, text, linkText, linkUrl, buttonText 
       <CardActions disableSpacing style={{ marginTop: 'auto', marginBottom: '10px', color: 'white' }}>
         {!isLinkShown ? (
           <Button
-          className='contact-card__button'
+            className="contact-card__button"
             variant="contained"
             size="large"
             color="primary"
@@ -47,7 +47,7 @@ export const ContactCard = ({ data: { icon, text, linkText, linkUrl, buttonText 
               navigator.clipboard.writeText(e.target.textContent);
               showToast('INFO', 'Copied to clipboard');
             }}
-            title="Click to copy to clipboard"
+            title={icon === 'telegram' ? 'Go to telegram messager' : 'Click to copy to clipboard'}
           >
             <b>{linkText}</b>
           </Link>

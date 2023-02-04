@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 const ArticleCard = ({ article }) => {
   const navigate = useNavigate();
   const usersLikedArticles = useSelector(state => state.users.data.likedArticles);
+
   let initialLikeButtonStyle = '';
   if (usersLikedArticles) {
     initialLikeButtonStyle = usersLikedArticles.includes(article._id) ? 'primary' : '';
@@ -24,7 +25,9 @@ const ArticleCard = ({ article }) => {
     if (e.target?.tagName === 'path' || e.target?.tagName === 'svg' || e.target?.tagName === 'BUTTON') {
       return;
     } else {
+      window.scrollTo(0,0);
       navigate(path);
+      
     }
   }
 
@@ -37,8 +40,8 @@ const ArticleCard = ({ article }) => {
   return (
       <Card className="d-flex flex-column article-card" onClick={navigateToArticleHandler(`/articles/article/${article._id}`)}>
         <CardMedia
-          style={{ height: 0, paddingTop: '56.25%' }}
-          image={`https://picsum.photos/200?${article._id}`}
+          style={{ height: 0, paddingTop: '56.25%', backgroundPosition: 'top' }}
+          image={article.imageSrc ? article.imageSrc : `https://picsum.photos/200?${article._id}`}
           title="some title"
         />
         <CardContent>

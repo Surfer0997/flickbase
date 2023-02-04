@@ -99,6 +99,17 @@ useEffect(()=>{
         </div>
 
         <div className="form-group">
+          <TextField
+            style={{ width: '100%' }}
+            name="imageSrc"
+            label="Enter an image URL"
+            variant="outlined"
+            {...formik.getFieldProps('imageSrc')}
+            {...errorHelper(formik, 'imageSrc')}
+          />
+        </div>
+
+        <div className="form-group">
           <WYSIWYG
             setEditorState={wysiwygState => handleEditorState(wysiwygState)}
             setEditorBlur={blur => handleEditorBlur}

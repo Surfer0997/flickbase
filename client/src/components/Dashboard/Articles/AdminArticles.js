@@ -37,6 +37,7 @@ const AdminArticles = () => {
     dispatch(changeArticleStatus({newStatus, _id}))
   }
   const handleDeleteArticle = () => {
+    console.log('delete')
     dispatch(deleteArticle({_id: articleIdToRemove}))
     .unwrap()
     .finally(()=>{

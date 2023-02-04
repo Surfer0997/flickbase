@@ -9,6 +9,7 @@ export const formValues = {
     actors:[],
     status:'draft',
     category: '',
+    imageSrc: ''
 }
 
 
@@ -35,5 +36,7 @@ export const validation = () => (
         .required('Sorry the status is required'),
         category:Yup.string()
         .required('Sorry the category is required'),
+        imageSrc:Yup.string()
+        .required('You should add a decent image\' URL too')
     })
 )

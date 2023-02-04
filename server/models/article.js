@@ -56,6 +56,10 @@ const articleSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    imageSrc: {
+        type: String,
+        default: 'https://picsum.photos/1920/1080'
+    }
 });
 
 articleSchema.plugin(aggregatePaginate);

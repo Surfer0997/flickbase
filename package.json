@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
-  "engines":{
+  "engines": {
     "node": "18.x"
   },
   "author": "Me and my shizophrenia",

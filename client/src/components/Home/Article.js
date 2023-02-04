@@ -16,13 +16,10 @@ const Article = () => {
 
     useEffect(()=>{
         dispatch(getArticle(id));
-
         return ()=>{
             dispatch(clearCurrentArticle())
         }
     },[id,dispatch])
-
-
 
     return(
         <>
@@ -30,7 +27,8 @@ const Article = () => {
                 <div className='article_container'>
                     <div
                         style={{
-                            background:`url(https://picsum.photos/1920/1080)`
+                            background: articles.current.imageSrc !== '' ? `url(${articles.current.imageSrc})` : `url(https://picsum.photos/1920/1080)`,
+
                         }}
                         className="image"
                     >
