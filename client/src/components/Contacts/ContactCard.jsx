@@ -1,63 +1,55 @@
-import { Card, CardContent, CardActions, IconButton, Typography, Button } from '@mui/material';
+import { Card, CardContent, CardActions, Typography, Button } from '@mui/material';
 import Link from '@mui/material/Link';
-
-import TelegramIcon from '@mui/icons-material/Telegram';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import CallIcon from '@mui/icons-material/Call';
-import HomeIcon from '@mui/icons-material/Home';
 
 import { useState } from 'react';
 import { showToast } from '../../utils/tools';
+import { useGetContactIcon } from './useGetContactIcon';
 
-export const ContactCard = ({ data:{icon, text, linkText, linkUrl} }) => {
+export const ContactCard = ({ data: { icon, text, linkText, linkUrl, buttonText } }) => {
   const [isLinkShown, setIsLinkShown] = useState(false);
-  let jsxIcon = <TelegramIcon color="" fontSize='large' htmlColor='white' />
-  switch(icon) {
-    case 'telegram':
-      jsxIcon = <TelegramIcon color="" fontSize='large' htmlColor='white' />
-    break;
-    case 'call':
-      jsxIcon = <CallIcon color="" fontSize='large' htmlColor='white' />
-    break;
-    case 'email':
-      jsxIcon = <MailOutlineIcon color="" fontSize='large' htmlColor='white' />
-    break;
-    case 'address':
-      jsxIcon = <HomeIcon color="" fontSize='large' htmlColor='white' />
-    break;
-    default:
-      icon = <TelegramIcon color="" fontSize='large' htmlColor='white' />
-  }
+  const jsxIcon = useGetContactIcon(icon);
 
   return (
-    <Card className="d-flex flex-column contacts-card" onClick={() => {}} sx={{position:'relative', overflow:'visible'}}>
-      <IconButton className='contact-card__icon-button'>
-        {jsxIcon}
-      </IconButton>
+    <Card
+      className="d-flex flex-column contacts-card"
+      onClick={() => {}}
+      sx={{ position: 'relative', overflow: 'visible' }}
+    >
+      {jsxIcon}
+
       <CardContent>
-        <Typography variant="h6" component="h2" sx={{color:'white'}}>
+        <Typography variant="h6" component="h2" sx={{ color: 'white' }}>
           {text}
         </Typography>
       </CardContent>
 
-      <CardActions disableSpacing style={{ marginTop: 'auto', paddingTop: 0, color: 'white' }}>
+      <CardActions disableSpacing style={{ marginTop: 'auto', marginBottom: '10px', color: 'white' }}>
         {!isLinkShown ? (
           <Button
-            variant='outlined'
+          className='contact-card__button'
+            variant="contained"
             size="large"
-            color="inherit"
+            color="primary"
             onClick={() => {
               setIsLinkShown(true);
             }}
           >
-            View article
+            {buttonText}
           </Button>
         ) : (
-          <Link href={linkUrl} variant="h6" sx={{padding: '7px'}} onClick={(e)=>{
-            navigator.clipboard.writeText(e.target.textContent);
-            showToast('INFO', 'Copied to clipboard')
-          }}>
-            {linkText}
+          <Link
+            href={linkUrl}
+            className="contact-card__link"
+            variant="h6"
+            sx={{ paddingBottom: '10px', color: '#fff' }}
+            underline="hover"
+            onClick={e => {
+              navigator.clipboard.writeText(e.target.textContent);
+              showToast('INFO', 'Copied to clipboard');
+            }}
+            title="Click to copy to clipboard"
+          >
+            <b>{linkText}</b>
           </Link>
         )}
       </CardActions>

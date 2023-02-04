@@ -77,15 +77,43 @@ nav .nav-link {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 ); /* IE6-9 */
 }
 /*////////// CONTACTMS  /////////////*/
+.contacts-header {
+  padding-top: 2rem;
+  color: #fff;
+  text-align: center;
+}
 .contacts-card {
   align-items: center;
-  background-color: rgba(255, 0, 255, 0.6) !important;
+  background: linear-gradient(135deg, rgba(255, 0, 255, 0.6) 0%, rgba(255, 0, 255, 1) 100%) !important;
   height: 100% !important;
+  border: transparent solid 1px;
+  -webkit-box-shadow: 0px 0px 16px 6px rgba(5,0,0,0.75) !important;
+-moz-box-shadow: 0px 0px 16px 6px rgba(0,0,0,0.75) !important;
+box-shadow: 3px 5px 16px 4px rgba(255,255,255,0.15) !important;
+}
+.contacts-card:hover {
+  border: #dbdbdb solid 1px;
+}
+.contacts-card:hover .contact-card__button {
+  transition: 1s;
+  background: #2986e2;
+  
+  -webkit-box-shadow: 0px 0px 50px 10px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 0px 0px 50px 10px rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 50px 10px rgba(255, 255, 255, 1);
 }
 .contacts_card {
   text-align: center;
-  justify-content: center;
+  align-content: center !important;
+  justify-content: space-around !important;
 }
+.contact-card__link {
+  color: #ffc107 !important;
+}
+.contact--card__link:hover {
+  color: #ffc107 !important;
+}
+
 .contact-card__icon-button {
   position: absolute !important;
   display: flex !important;
